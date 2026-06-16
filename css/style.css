@@ -242,37 +242,36 @@ body.welcome-mode { margin: 0; padding: 0; height: 100vh; overflow: hidden; back
    CẤU HÌNH SIDEBAR VÀ GIAO DIỆN VỪA 1 MÀN HÌNH (Cho Trang Chặng)
    ========================================= */
 body.stage-page {
-    overflow: hidden; /* Khóa hoàn toàn thanh cuộn dọc của trang */
+    overflow: hidden; /* Khóa cuộn trên máy tính */
 }
 
+/* 1. TRÊN MÁY TÍNH: Thanh Sidebar luôn mở ra, Ẩn nút Menu */
 body.stage-page .sidebar {
-    left: 0 !important; /* Luôn hiển thị Sidebar */
+    left: 0 !important; 
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
 
 body.stage-page .menu-toggle {
-    display: none !important; /* Ẩn nút menu */
+    display: none !important; /* Mặc định giấu nút Menu trên máy tính */
 }
 
+/* 2. Căn lề nội dung chừa chỗ cho Sidebar trên máy tính */
 body.stage-page .main-content {
-    margin-left: 280px; 
-    width: calc(100% - 280px); 
-    height: 100vh; /* Ép chiều cao phần nội dung đúng bằng 1 màn hình */
-    padding: 20px 40px 0 40px; /* Thu nhỏ khoảng cách viền trên */
+    margin-left: 280px !important; 
+    width: calc(100% - 280px) !important; 
+    height: 100vh; 
+    padding: 20px 40px 0 40px !important; 
     display: flex;
     flex-direction: column;
 }
 
-/* Thu gọn các khoảng trống dư thừa giữa các khối tiêu đề */
+/* 3. Thu gọn các khoảng trống dư thừa giữa các khối tiêu đề */
 body.stage-page .top-controls { margin-bottom: 10px; }
 body.stage-page .hero { padding: 15px 20px; margin-bottom: 15px; }
 body.stage-page .hero h1 { font-size: 1.7rem; margin-bottom: 0; }
 body.stage-page h2 { margin-bottom: 5px !important; font-size: 1.3rem; }
 
-/* BÍ QUYẾT: Sơ đồ tư duy sẽ có flex: 1
-  Nó sẽ tự động giãn nở lấp đầy khoảng trống ở giữa, 
-  qua đó đẩy chân trang xuống vừa khít mép dưới màn hình.
-*/
+/* 4. Sơ đồ tư duy tự động giãn nở lấp đầy khoảng trống */
 body.stage-page .mindmap-container {
     flex: 1; 
     height: auto;
@@ -283,10 +282,10 @@ body.stage-page .mindmap-container {
 /* Thu gọn các nút điều hướng */
 body.stage-page .stage-nav { margin-top: 15px; margin-bottom: 15px; }
 
-/* TĂNG KÍCH THƯỚC Ô VÀ CHỮ TRONG SƠ ĐỒ TƯ DUY (Trang Chặng) */
+/* Tăng kích thước ô câu hỏi trung tâm */
 body.stage-page .mm-node.center { 
     padding: 25px; 
-    width: 440px; /* Tăng độ rộng ô câu hỏi */
+    width: 440px; 
     top: 48%; 
 }
 body.stage-page .mm-node.center p:first-child { 
@@ -294,7 +293,7 @@ body.stage-page .mm-node.center p:first-child {
     margin-bottom: 10px !important; 
 }
 body.stage-page .mm-node.center p:last-child { 
-    font-size: 1.35rem !important; /* Chữ câu hỏi to rõ hơn */
+    font-size: 1.35rem !important; 
     line-height: 1.4;
 }
 
@@ -401,20 +400,23 @@ body.stage-page .mm-node.bottom-center { top: 78%; }
 
 
     /* --- CHỨC NĂNG 2: BẢO TOÀN NÚT MENU ĐỂ ĐIỀU HƯỚNG --- */
+    body.stage-page .menu-toggle,
     .menu-toggle {
         display: block !important;
         position: fixed !important;
         top: 15px !important;
         left: 15px !important;
-        z-index: 99999 !important; /* Đẩy lên lớp cao nhất tuyệt đối */
+        z-index: 99999 !important; 
         padding: 8px 16px !important;
         font-size: 1rem !important;
     }
+    
+    body.stage-page .page-logo-top,
     .page-logo-top {
         display: block !important;
         position: fixed !important;
         top: 15px !important;
-        left: 120px !important; /* Đẩy cạnh nút menu */
+        left: 120px !important; 
         height: 35px !important;
         z-index: 99999 !important;
     }
