@@ -370,14 +370,78 @@ body.stage-page .mm-node.tl { top: 22%; left: 18%; }
 body.stage-page .mm-node.tr { top: 22%; left: 82%; }
 body.stage-page .mm-node.bottom-center { top: 78%; }
 
-/* Nếu người dùng xài điện thoại màn hình nhỏ, trả lại thanh cuộn cho họ */
+/* =========================================
+   SỬA KÍCH THƯỚC CHỮ CHO CÂN ĐỐI TRÊN ĐIỆN THOẠI
+   (Áp dụng cho màn hình nhỏ hơn 900px)
+   ========================================= */
 @media (max-width: 900px) {
-    body.stage-page { overflow: auto; } 
-    body.stage-page .main-content {
-        margin-left: 0; width: 100%; height: auto; padding-top: 20px;
+    /* 1. Đẩy cụm nội dung lên cao một chút vì trên mobile khoảng cách margin-top:80px của PC là quá nhiều */
+    .welcome-content { 
+        margin-top: 50px; 
+        padding: 10px 20px; /* Giảm padding ngang để chữ rộng ra hai bên */
     }
-    body.stage-page .sidebar { width: 100%; }
-    body.stage-page .mindmap-container { height: 600px; }
+
+    /* 2. Giảm kích thước Tiêu đề chính (to nhất) - Cực kỳ quan trọng */
+    .welcome-title { 
+        font-size: 1.2rem !important; /* Giảm mạnh xuống 1.2rem để tiêu đề gọn gàng, có thể xuống dòng đẹp */
+        white-space: normal; /* Đảm bảo chữ tự động xuống dòng khi chạm mép */
+        line-height: 1.4; /* Tăng độ giãn dòng để dễ đọc khi xuống dòng */
+        margin-bottom: 10px; /* Giảm khoảng cách dưới */
+    }
+
+    /* 3. Giảm kích thước Tiêu đề phụ (màu trắng bên dưới) */
+    .welcome-subtitle { 
+        font-size: 1.0rem; /* Tụt xuống cỡ chữ thường 1rem */
+        font-weight: 400; /* Làm chữ bớt đậm cho thanh thoát */
+        margin-bottom: 8px; 
+    }
+
+    /* 4. Giảm kích thước dòng mô tả (in nghiêng) */
+    .welcome-desc { 
+        font-size: 0.9rem; /* Cỡ chữ nhỏ hơn nữa 0.9rem */
+        margin-bottom: 25px; /* Tạo khoảng cách với nút bấm */
+    }
+
+    /* 5. Giảm kích thước nút bấm */
+    .btn-start {
+        font-size: 1.1rem; /* Giảm cỡ chữ nút bấm */
+        padding: 12px 30px; /* Thu nhỏ nút bấm */
+        border-radius: 40px; /* Bo góc mượt hơn */
+    }
+
+    /* 6. Điều chỉnh hình ảnh (bữ hơn một chút so với cũ để cân đối khoảng trống) */
+    .welcome-hero-img { 
+        max-height: 35vh; /* Chiếm tối đa 35% chiều cao màn hình */
+        max-width: 100%; /* Bung hết cỡ ngang */
+        margin-top: 20px; 
+    }
+    /* 1. Giấu Sidebar đi mặc định trên mobile */
+    body.stage-page .sidebar {
+        left: -320px !important; /* Rút thanh menu vào lề trái */
+        width: 280px !important; /* Giới hạn độ rộng, không cho chiếm full màn hình */
+        max-width: 80vw; /* Tối đa chỉ chiếm 80% chiều ngang điện thoại */
+        box-shadow: 5px 0 25px rgba(0,0,0,0.5);
+    }
+
+    /* 2. Trạng thái trượt ra khi bấm nút Menu */
+    body.stage-page .sidebar.active {
+        left: 0 !important;
+    }
+
+    /* 3. Đảm bảo nút Menu và Logo luôn xuất hiện trên cùng để người dùng có cái mà bấm */
+    .menu-toggle {
+        display: block !important;
+    }
+    .page-logo-top {
+        display: block !important;
+    }
+
+    /* 4. Đẩy nội dung trang chặng xuống một chút để không bị đè bởi nút Menu */
+    body.stage-page .main-content, 
+    body.stage-page #mindmap-container {
+        padding-top: 60px !important; 
+        margin-left: 0 !important; /* Trả lại không gian bên trái do sidebar đã bị giấu */
+    }
 }
 /* =========================================
    HIỆU ỨNG CHUYỂN TRANG TOÀN DIỆN (ALL PAGES TRANSITIONS)
